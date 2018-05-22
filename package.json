@@ -1,6 +1,9 @@
 {
   "name": "crawler-rails",
   "privategit ": true,
+  "scripts": {
+    "dev" : "./bin/webpack-dev-server && rails server"
+  },
   "dependencies": {
     "@rails/webpacker": "3.5",
     "rails-erb-loader": "^5.4.2"
