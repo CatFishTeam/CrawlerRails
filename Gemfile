@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-05-22 18:08:30 +0200 by mael:
 gem "nokogiri", "~> 1.8"
+
+# Added at 2018-05-22 18:31:14 +0200 by mael:
+gem "npm-pipeline-rails", "~> 1.8"

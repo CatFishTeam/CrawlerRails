@@ -32,3 +32,8 @@
 .idea
 .DS_Store
 CrawlerRails.iml
+/node_modules
+
+/node_modules
+/vendor/assets/stylesheets/webpack
+/vendor/assets/javascripts/webpack
