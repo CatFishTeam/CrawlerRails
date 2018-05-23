@@ -7,12 +7,11 @@ class SpiderController < ApplicationController
 
   def search()
     require 'spider'
-    url = params[:id]
-    puts url
+    url = params[:q]
 
     @nodes = []
-    Spider.start_at('http://www.isphers.com/') do |s|
-      s.add_url_check {|a_url| a_url =~ %r{^http://www.isphers.com.*} }
+    Spider.start_at(url) do |s|
+      s.add_url_check {|a_url| a_url =~ %r{^#{url}.*} }
 
       s.on(:every) do |a_url, resp, prior_url|
         puts "#{a_url} | #{prior_url} : #{resp.code}"
