@@ -66,3 +66,6 @@ gem "nokogiri", "~> 1.8"
 
 # Added at 2018-05-23 00:12:02 +0200 by mael:
 gem "webpacker", "~> 3.5"
+
+# Added at 2018-05-23 06:43:27 +0200 by mael:
+gem "devise", "~> 4.4"
