@@ -71,3 +71,4 @@ gem "webpacker", "~> 3.5"
 gem "devise", "~> 4.4"
 
 gem "rest-client"
+gem "spider", "~> 0.5.3"

@@ -5,17 +5,17 @@
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
 
-        <%= javascript_pack_tag 'application' %>
         <%= stylesheet_pack_tag 'application' %>
     </head>
 
     <body>
-        <%= render 'navbar' %>
+        <%= render 'components/navbar' %>
         <% flash.each do |name, msg| %>
                <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
         <% end %>
         <div class="container">
             <%= yield %>
         </div>
+        <%= javascript_pack_tag 'application' %>
     </body>
 </html>

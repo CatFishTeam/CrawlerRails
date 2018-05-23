@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <%= link_to 'Home', root_path, :class => "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <%= link_to 'About Us', home_about_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/spider">Spider</a>
+            </li>
+        </ul>
+        <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>        <ul class="navbar-nav">
+            <li class="nav-item">
+                <%= link_to 'Connection', new_user_session_path, :class => "nav-link" %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Register', new_user_registration_path, :class => "nav-link" %>
+            </li>
+        </ul>
+    </div>
+</nav>
