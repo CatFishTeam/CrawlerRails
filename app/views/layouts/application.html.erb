@@ -10,7 +10,7 @@
     </head>
 
     <body>
-        <%= render 'navbar' %>
+        <%= render 'components/navbar' %>
         <% flash.each do |name, msg| %>
                <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
         <% end %>
