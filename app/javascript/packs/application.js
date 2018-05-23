@@ -14,4 +14,4 @@ import 'bootstrap'
 
 //CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../../style/test.css'
+import '../../style/main.sass'
