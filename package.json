@@ -5,6 +5,9 @@
     "@rails/webpacker": "3.5",
     "rails-erb-loader": "^5.4.2"
   },
+  "scripts": {
+    "dev": "./bin/webpack-dev-server"
+  },
   "devDependencies": {
     "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",
