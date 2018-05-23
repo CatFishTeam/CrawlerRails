@@ -37,3 +37,6 @@ CrawlerRails.iml/public/packs
 yarn-debug.log*
 .yarn-integrity
 /public/packs/
+
+package-lock.json
+public/packs/manifest.json
