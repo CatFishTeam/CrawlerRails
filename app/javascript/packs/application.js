@@ -12,6 +12,9 @@ console.log('Hello World from Webpacker')
 import {$, jQuery} from 'jquery'
 import 'bootstrap'
 
+// JS files
+import './pagespeed';
+
 //CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../style/main.sass'
