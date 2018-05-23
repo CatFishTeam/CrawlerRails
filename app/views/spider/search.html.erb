@@ -1,0 +1,31 @@
+<%= javascript_pack_tag 'hello_erb' %>
+
+<table class="table">
+  <thead>
+    <th>URL source</th>
+    <th>URL de destination</th>
+    <th>Reponse</th>
+  </thead>
+  <tbody>
+
+  <% @nodes.each do |node| %>
+  <tr>
+    <td>
+      <% if node[:source] != nil %>
+        <a href="<%= node[:source] %>"><%= node[:source] %></a>
+      <% else %>
+        /
+      <% end %>
+    </td>
+    <td><a href="<%= node[:dest] %>"><%= node[:dest] %></a></td>
+    <td>
+      <div class="alert alert-<%= convert_http_code(node[:code]) %>" role="alert">
+        <%= node[:code] %>
+      </div>
+    </td>
+  </tr>
+  <% end %>
+    <td></td>
+    <td></td>
+  </tbody>
+</table>
