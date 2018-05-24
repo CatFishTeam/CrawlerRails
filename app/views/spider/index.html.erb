@@ -1,8 +1,10 @@
 <%= javascript_pack_tag 'hello_erb' %>
 
+<h1>Web Spider</h1>
+
   <%= form_tag("/spider/search") do %>
     <div class="form-group">
-    <%= label_tag(:q, "Search for:") %>
+    <%= label_tag(:q, "Url:") %>
     <%= text_field_tag(:q, '', class: "form-control") %>
     </div>
     <%= submit_tag("Search", class: "btn btn-primary") %>
