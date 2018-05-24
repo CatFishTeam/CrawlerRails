@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post '/spider/search', to: 'spider#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'crawltemp#index'
-  resources :crawltemp
+  get 'crawltemp', to: 'crawltemp#index'
+  post '/crawltemp/search', to: 'crawltemp#search'
 
 end
