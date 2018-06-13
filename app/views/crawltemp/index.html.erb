@@ -1,0 +1,11 @@
+<%= javascript_pack_tag 'hello_erb' %>
+
+<h1>W3C</h1>
+
+<%= form_tag("/crawltemp/search") do %>
+  <div class="form-group">
+    <%= label_tag(:url, "Search for:") %>
+    <%= text_field_tag(:url, '', class: "form-control") %>
+  </div>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
+<% end %>

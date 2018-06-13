@@ -4,7 +4,7 @@ class ScoringController < ApplicationController
   end
 
   def search
-    # data = params[:data]
-    # puts "#{data}"
+    data = params[:data]
+    puts "#{data}"
   end
 end

@@ -2,6 +2,8 @@ let $ = require('jquery');
 
 let url = findGetParameter('url');
 
+console.log('scoring');
+
 let urlForm = document.querySelector('#urlForm');
 let resultArea = document.querySelector('.result');
 
