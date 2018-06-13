@@ -2,8 +2,9 @@
 
 <%= form_tag("/scoring/search") do %>
   <div class="form-group">
-    <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser" value="<%= @url || "" %>">
+    <%= select_tag :url, options_from_collection_for_select(@websites, "id", "url"), class: "form-control" %>
   </div>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
 <% end %>
 
 <div class="scoring-loader"></div>

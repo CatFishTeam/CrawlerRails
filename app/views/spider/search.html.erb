@@ -10,12 +10,12 @@
   <tr>
     <td>
       <% if node[:source] != nil %>
-        <a href="<%= node[:source] %>"><%= node[:source] %></a>
+        <a href="<%= node[:source] %>" target="_blank"><%= node[:source] %></a>
       <% else %>
         /
       <% end %>
     </td>
-    <td><a href="<%= node[:dest] %>"><%= node[:dest] %></a></td>
+    <td><a href="<%= node[:dest] %>" target="_blank"><%= node[:dest] %></a></td>
     <td>
       <div class="alert alert-<%= convert_http_code(node[:code]) %>" role="alert">
         <%= node[:code] %>

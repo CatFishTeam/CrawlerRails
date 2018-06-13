@@ -1,7 +1,7 @@
 class ScoringController < ApplicationController
 
   def index
-
+    @websites = Website.where(user: current_user)
   end
 
   def search
@@ -9,7 +9,13 @@ class ScoringController < ApplicationController
     require 'uri'
     require 'json'
 
-    @url = params[:url]
+    @websites = Website.where(user: current_user)
+
+    website = params[:url]
+    website = Website.find(website)
+
+    @url = website.url
+
     uri = URI.parse("https://www.googleapis.com/pagespeedonline/v4/runPagespeed?url=#{@url} &key=AIzaSyCJtYr2YA84j56a81uk_WQSuIfR1z0ebvA&locale=fr")
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
@@ -19,6 +25,8 @@ class ScoringController < ApplicationController
     puts @res
     @score = @res["ruleGroups"]["SPEED"]["score"]
     @results = @res["formattedResults"]["ruleResults"]
-    #TODO ADD http(s) if not found
+
+    website.score_page_speed = @score
+    website.save
   end
 end

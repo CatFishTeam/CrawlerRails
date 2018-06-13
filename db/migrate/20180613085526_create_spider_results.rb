@@ -8,9 +8,5 @@ class CreateSpiderResults < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-
-    change_table :websites do |t|
-      t.boolean :validate_spider
-    end
   end
 end

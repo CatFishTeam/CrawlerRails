@@ -11,12 +11,12 @@
   <tr>
     <td>
       <% if result[:urlFrom] != nil %>
-        <a href="<%= result[:urlFrom] %>"><%= result[:urlFrom] %></a>
+        <a href="<%= result[:urlFrom] %>" target="_blank"><%= result[:urlFrom] %></a>
       <% else %>
         /
       <% end %>
     </td>
-    <td><a href="<%= result[:urlTo] %>"><%= result[:urlTo] %></a></td>
+    <td><a href="<%= result[:urlTo] %>" target="_blank"><%= result[:urlTo] %></a></td>
     <td>
       <div class="alert alert-<%= convert_http_code(result[:response]) %>" role="alert">
         <%= result[:response] %>

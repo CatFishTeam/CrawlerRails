@@ -7,7 +7,7 @@ require 'rest-client';
 class CrawltempController < ApplicationController
 
   def index
-
+    @websites = Website.where(user: current_user)
   end
 
   def search
@@ -20,7 +20,12 @@ class CrawltempController < ApplicationController
     h1 = Array.new
     w3c= "https://validator.w3.org/nu/?doc="
 
-    url = params[:url]
+
+    website = params[:url]
+    website = Website.find(website)
+
+    url = website.url
+
     html = RestClient.get(url)
     w3c_html = RestClient.get(w3c+url)
     doc = Nokogiri::HTML(html)

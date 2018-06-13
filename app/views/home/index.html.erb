@@ -13,10 +13,10 @@
             <tbody>
             <% @websites.each do |website| %>
                 <tr>
-                    <td><a href="<%= website.url %>"><%= website.url %></a></td>
-                    <td class="text-center"><% if website.validate_page_speed != nil %><%= raw website.validate_page_speed ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %><% else %>-<% end %></td>
-                    <td class="text-center"><% if website.validate_spider != nil %><%= raw website.validate_spider ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %><% else %>-<% end %></td>
-                    <td class="text-center"><% if website.validate_spider != nil %><%= raw website.validate_spider ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %><% else %>-<% end %></td>
+                    <td><a href="<%= website.url %>" target="_blank"><%= website.url %></a></td>
+                    <td class="text-center"><% if website.score_page_speed != nil %><%= raw website.score_page_speed > 50 ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %> <%= website.score_page_speed%>/100<% else %>-<% end %></td>
+                    <td class="text-center"><% if website.score_spider != nil %><%= raw website.score_spider > 50 ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %> <%= website.score_spider%>/100<% else %>-<% end %></td>
+                    <td class="text-center"><% if website.score_w3c != nil %><%= raw website.score_w3c > 50 ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %> <%= website.score_w3c%>/100<% else %>-<% end %></td>
                 </tr>
             <% end %>
             </tbody>
@@ -41,7 +41,7 @@
             <tbody>
             <% @websites.each do |website| %>
                 <tr>
-                    <td><a href="<%= website.url %>"><%= website.url %></a></td>
+                    <td><a href="<%= website.url %>" target="_blank"><%= website.url %></a></td>
                     <td class="text-right"><a class="btn btn-danger text-white" href="/removeWebsite/<%= website.id %>">Remove</a></td>
                 </tr>
             <% end %>
