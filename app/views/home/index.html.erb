@@ -2,17 +2,15 @@
 
 <div class="container">
     <% if user_signed_in? %>
-    <h1>Add a website</h1>
-    <form class="mt-5" action="add-website" name="addWebsite">
-        <div class="form-group">
-            <input type="text" class="form-control"  placeholder="Entrer une adresse" name="url">
-        </div>
-    </form>
-
-    <% @websites.each do |node| %>
-        <p> <% node[:url] %></p>
-    <% end %>
-
+        <h1>Add a website</h1>
+        <form class="mt-5" action="add-website" name="addWebsite">
+            <div class="form-group">
+                <input type="text" class="form-control"  placeholder="Entrer une adresse" name="url">
+            </div>
+        </form>
+        <% @websites.each do |website| %>
+            <p> <%= website.url %></p>
+        <% end %>
     <% else %>
     Connectez vous (redirect if not connected after)
     <% end %>
