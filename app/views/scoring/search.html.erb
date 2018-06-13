@@ -1,11 +1,34 @@
-<div class="container">
-  <h1>Scoring</h1>
+<h1>Performances</h1>
 
-  <%= form_tag("/scoring/search", method: :get) do %>
-    <div class="form-group">
-      <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser">
-    </div>
-  <% end %>
+<%= form_tag("/scoring/search") do %>
+  <div class="form-group">
+    <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser" value="<%= @url || "" %>">
+  </div>
+<% end %>
 
-  <div class="result"></div>
+<div class="scoring-loader"></div>
+
+<div class="score">
+  Score :
+  <% if @score < 50 %> <span class="bad"> <%= @score %> </span>
+  <% elsif @score >= 50 && @score < 75 %> <span class="average"> <%= @score %> </span>
+  <% else %> <span class="good"> <%= @score %> </span>
+  <% end %>  / 100<br>
+  <%= @res["id"] %>
 </div>
+<div class="recommandations">
+  <h3>Nos recommandations</h3>
+  <% @results.each do |result| -%>
+    <h4><%= result[1]["localizedRuleName"] %></h4>
+    <div>
+      <% if result[1]["summary"]["format"].include? "En savoir plus" %>
+        <%= result[1]["summary"]["format"].slice(0..(result[1]["summary"]["format"].index('. '))) %>
+      <% else %>
+        <%= result[1]["summary"]["format"] %>
+      <% end %>
+    </div>
+  <% end -%>
+</div>
+<!--<div>-->
+<!--  <pre><%#= @response.body %></pre>-->
+<!--</div>-->
