@@ -4,9 +4,9 @@
 
 `yarn install`
 
-`./bin/webpack-dev-server`
+`rails db:drop db:create db:migrate db:seed`
 
-`bin/rails db:migrate`
+`npm run dev`
 
 # Flash Messages
 Dans un controller :

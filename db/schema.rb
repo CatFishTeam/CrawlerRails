@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 2018_06_13_085526) do
   create_table "websites", force: :cascade do |t|
     t.string "url", null: false
     t.integer "user_id"
+    t.boolean "validate_page_speed"
+    t.boolean "validate_spider"
     t.index ["user_id"], name: "index_websites_on_user_id"
   end
 
