@@ -7,7 +7,7 @@
 <% end %>
 
 <div class="scoring-loader"></div>
-
+<canvas id="myChart"></canvas>
 <div class="score">
   Score :
   <% if @score < 50 %> <span class="bad"> <%= @score %> </span>
@@ -29,6 +29,9 @@
     </div>
   <% end -%>
 </div>
+<script>
+    let chartPercent = <%= @score %>
+</script>
 <!--<div>-->
 <!--  <pre><%#= @response.body %></pre>-->
 <!--</div>-->

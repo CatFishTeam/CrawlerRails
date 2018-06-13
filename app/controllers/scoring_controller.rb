@@ -16,7 +16,9 @@ class ScoringController < ApplicationController
     request = Net::HTTP::Get.new(uri.request_uri)
     @response = http.request(request)
     @res = JSON.parse(@response.body)
+    puts @res
     @score = @res["ruleGroups"]["SPEED"]["score"]
     @results = @res["formattedResults"]["ruleResults"]
+    #TODO ADD http(s) if not found
   end
 end
