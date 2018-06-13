@@ -10,12 +10,14 @@
 
     <body>
         <%= render 'components/navbar' %>
-        <% flash.each do |name, msg| %>
-               <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-        <% end %>
         <div class="container">
             <%= yield %>
         </div>
         <%= javascript_pack_tag 'application' %>
+        <script>
+            <% flash.each do |name, msg| %>
+                toastr.<%= name %>('<%= msg %>')
+            <% end %>
+        </script>
     </body>
 </html>

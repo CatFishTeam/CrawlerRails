@@ -11,6 +11,7 @@ console.log('Hello World from Webpacker')
 
 import {$, jQuery} from 'jquery'
 import 'bootstrap'
+import toastr from 'toastr'
 
 // JS files
 import './pagespeed';
@@ -18,3 +19,6 @@ import './pagespeed';
 //CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../../style/main.sass'
+import 'toastr/toastr.scss'
+
+window.toastr = toastr
