@@ -23,7 +23,7 @@ class SpiderController < ApplicationController
 
       s.on(:every) do |a_url, resp, prior_url|
         puts "#{a_url} | #{prior_url} : #{resp.code}"
-        #SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => website, :created_at => datetime)
+        SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => website, :created_at => datetime)
 
 
         count += 1
@@ -34,8 +34,9 @@ class SpiderController < ApplicationController
     end
 
     score = (score * 100) / (count * 3)
-    puts score
 
+    website.score_spider = score
+    website.save
   end
 
   def list
