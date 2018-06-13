@@ -1,3 +1,8 @@
+# Admin
+email: `admin@admin.com`
+
+pss : `adminpass`
+
 # Install
 
 `bundle install`
