@@ -15,6 +15,7 @@ class SpiderController < ApplicationController
 
       s.on(:every) do |a_url, resp, prior_url|
         puts "#{a_url} | #{prior_url} : #{resp.code}"
+        SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => 1)
 
         @nodes << {:source => prior_url, :dest => a_url, :code => resp.code}
       end
