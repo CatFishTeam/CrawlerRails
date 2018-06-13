@@ -22,10 +22,7 @@ class SpiderController < ApplicationController
       s.add_url_check {|a_url| a_url =~ %r{^#{url}.*} }
 
       s.on(:every) do |a_url, resp, prior_url|
-        puts "#{a_url} | #{prior_url} : #{resp.code}"
         SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => website, :created_at => datetime)
-
-
         count += 1
         score += score_http_code(resp.code)
 
@@ -44,9 +41,6 @@ class SpiderController < ApplicationController
     website = Website.find(website)
 
     @spiderResults = SpiderResult.where(website: website).order(created_at: :desc)
-
-    puts @spiderResults
-
 
   end
 end
