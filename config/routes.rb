@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   get 'crawltemp', to: 'crawltemp#index'
   post '/crawltemp/search', to: 'crawltemp#search'
 
+  get 'add-website', to: 'home#addWebsite'
+
 end

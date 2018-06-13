@@ -1,11 +1,28 @@
 <%= javascript_pack_tag 'hello_erb' %>
 
 <div class="container">
-  <form class="mt-5">
-    <div class="form-group">
-      <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser">
-    </div>
-  </form>
+    <% if user_signed_in? %>
+    <h1>Add a website</h1>
+    <form class="mt-5" action="add-website" name="addWebsite">
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="Entrer une adresse" name="url">
+        </div>
+    </form>
+
+    <% @websites.each do |node| %>
+        <p> <% node[:url] %></p>
+    <% end %>
+
+    <% else %>
+    Connectez vous (redirect if not connected after)
+    <% end %>
+
+    A deplacer ->
+      <form class="mt-5">
+        <div class="form-group">
+          <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser">
+        </div>
+      </form>
 
   <div class="result"></div>
 
