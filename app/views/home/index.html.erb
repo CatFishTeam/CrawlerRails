@@ -8,6 +8,11 @@
             <input type="text" class="form-control"  placeholder="Entrer une adresse" name="url">
         </div>
     </form>
+
+    <% @websites.each do |node| %>
+        <p> <% node[:url] %></p>
+    <% end %>
+
     <% else %>
     Connectez vous (redirect if not connected after)
     <% end %>

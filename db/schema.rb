@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2018_05_24_125326) do
 
   create_table "websites", force: :cascade do |t|
     t.string "url", null: false
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_websites_on_users_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_websites_on_user_id"
   end
 
 end
