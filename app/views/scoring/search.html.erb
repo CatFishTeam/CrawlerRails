@@ -1,0 +1,11 @@
+<%= javascript_pack_tag 'hello_erb' %>
+
+<h1>Scoring</h1>
+
+<%= form_tag("/scoring/search", method: :get) do %>
+  <div class="form-group">
+    <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser">
+  </div>
+<% end %>
+
+<div class="result"></div>

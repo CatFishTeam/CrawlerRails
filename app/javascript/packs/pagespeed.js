@@ -1,3 +1,5 @@
+let $ = require('jquery');
+
 let url = findGetParameter('url');
 
 let urlForm = document.querySelector('#urlForm');
@@ -9,13 +11,18 @@ if (url) {
     fetch("https://www.googleapis.com/pagespeedonline/v4/runPagespeed?url="+ url +"&key=AIzaSyCJtYr2YA84j56a81uk_WQSuIfR1z0ebvA")
         .then(response => response.json())
         .then(data => {
-        console.log(data);
-        if (data.error) {
-            resultArea.innerHTML = data.error.message;
-        } else if (data.responseCode && data.responseCode === 200) {
-            resultArea.innerHTML = `Score : ${data.ruleGroups.SPEED.score} / 100`;
-        }
-    });
+            console.log(data);
+            if (data.error) {
+                resultArea.innerHTML = data.error.message;
+            } else if (data.responseCode && data.responseCode === 200) {
+                resultArea.innerHTML = `Score : ${data.ruleGroups.SPEED.score} / 100`;
+            }
+            $.ajax({
+                url : "/",
+                type : "get",
+                data : { data: JSON.stringify(data) }
+            });
+        });
 }
 
 function findGetParameter(parameterName) {
