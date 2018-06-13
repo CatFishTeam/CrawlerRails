@@ -1,9 +1,21 @@
+# Admin
+email: `admin@admin.com`
+
+pss : `adminpass`
+
 # Install
 
 `bundle install`
 
 `yarn install`
 
-`./bin/webpack-dev-server`
+`rails db:drop db:create db:migrate db:seed`
 
-`bin/rails db:migrate`
+`npm run dev`
+
+# Flash Messages
+Dans un controller :
+
+      flash[:warning] = "Votre url n'est pas valide !"
+
+Options possible : `info`, `warning`, `success`, `error`

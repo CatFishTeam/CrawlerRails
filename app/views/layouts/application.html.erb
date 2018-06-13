@@ -4,18 +4,21 @@
         <title>CrawlerRails</title>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
         <%= stylesheet_pack_tag 'application' %>
     </head>
 
     <body>
         <%= render 'components/navbar' %>
-        <% flash.each do |name, msg| %>
-               <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
-        <% end %>
         <div class="container">
             <%= yield %>
         </div>
         <%= javascript_pack_tag 'application' %>
+        <script>
+            <% flash.each do |name, msg| %>
+                toastr.<%= name %>('<%= msg %>')
+            <% end %>
+        </script>
     </body>
 </html>

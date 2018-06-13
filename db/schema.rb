@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_24_125326) do
+ActiveRecord::Schema.define(version: 2018_06_13_085526) do
 
   create_table "page_speed", force: :cascade do |t|
     t.integer "score"
     t.integer "websites_id"
     t.index ["websites_id"], name: "index_page_speed_on_websites_id"
+  end
+
+  create_table "spider_results", force: :cascade do |t|
+    t.string "urlFrom"
+    t.string "urlTo"
+    t.integer "response"
+    t.integer "website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["website_id"], name: "index_spider_results_on_website_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,8 +47,10 @@ ActiveRecord::Schema.define(version: 2018_05_24_125326) do
 
   create_table "websites", force: :cascade do |t|
     t.string "url", null: false
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_websites_on_users_id"
+    t.integer "user_id"
+    t.boolean "validate_page_speed"
+    t.boolean "validate_spider"
+    t.index ["user_id"], name: "index_websites_on_user_id"
   end
 
 end
