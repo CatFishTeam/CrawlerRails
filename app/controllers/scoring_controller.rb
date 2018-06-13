@@ -1,7 +1,7 @@
 class ScoringController < ApplicationController
 
   def index
-    @websites = Website.where(user_id: current_user.id)
+    @websites = Website.where(user: current_user)
   end
 
   def search
@@ -9,7 +9,7 @@ class ScoringController < ApplicationController
     require 'uri'
     require 'json'
 
-    @websites = Website.where(user_id: current_user.id)
+    @websites = Website.where(user: current_user)
 
     website = params[:url]
     website = Website.find(website)

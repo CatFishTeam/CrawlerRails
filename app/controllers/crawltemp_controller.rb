@@ -7,7 +7,7 @@ require 'rest-client';
 class CrawltempController < ApplicationController
 
   def index
-    @websites = Website.where(user_id: current_user.id)
+    @websites = Website.where(user: current_user)
   end
 
   def search
