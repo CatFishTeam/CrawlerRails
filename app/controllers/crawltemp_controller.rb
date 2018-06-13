@@ -6,8 +6,11 @@ require 'rest-client';
 
 class CrawltempController < ApplicationController
 
-
   def index
+
+  end
+
+  def search
     #page = Nokogiri::HTML(open("http://www.google.fr/"))
     #@crawl = page.css('title')
     #@crawl.to_xhtml(indent:3, indent_text:".")

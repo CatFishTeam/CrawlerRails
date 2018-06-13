@@ -1,73 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>CrawlerRails</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+<%= javascript_pack_tag 'hello_erb' %>
 
-  <%= javascript_pack_tag 'application' %>
-  <%= stylesheet_pack_tag 'application' %>
-</head>
+<h1>W3C</h1>
 
-<body>
-<% flash.each do |name, msg| %>
-  <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+<%= form_tag("/crawltemp/search") do %>
+  <div class="form-group">
+    <%= label_tag(:url, "Search for:") %>
+    <%= text_field_tag(:url, '', class: "form-control") %>
+  </div>
+  <%= submit_tag("Search", class: "btn btn-primary") %>
 <% end %>
-
-<p class="container">
-  <%= yield %>
-  <h3>H1</h3>
-  <p><%= @h1_error %></p>
-  <h3>W3C</h3>
-  <p>Nombre de warnings et d'erreurs W3C sur cette page : <%= @w3c_result %> </p>
-  <h3>Meta Data</h3>
-  <% if @meta_title[0] %>
-    <p>Title: It's Good</p>
-  <% else %>
-    <p>Title: Pas de Titre</p>
-  <% end %>
-  <% if @meta_content[0] %>
-    <p>Charset: It's Good</p>
-  <% else %>
-    <p>Charset: Pas de charset</p>
-  <% end %>
-  <% if @meta_desc[0] %>
-    <p>Description: It's Good</p>
-  <% else %>
-    <p>Description: Pas de Descritpion</p>
-  <% end %>
-  <% if @meta_viewport[0] %>
-    <p>Viewport: It's Good</p>
-  <% else %>
-    <p>Viewport: Pas de Viewport</p>
-  <% end %>
-
-  <h3>Images extensions</h3>
-  <p>Vos images doivent avoir comme extension soit .jpg, soit .png, soit .gif.</p>
-  <% if @no_image_url == 1 %>
-    <p>Toutes les images de cette page ont une bonne extension.</p>
-  <% else %>
-    <p>Ces images ne respectent pas cette règle: </p>
-    <ul>
-    <% @all_image_urls.each do |img| %>
-        <li><%= img %></li>
-    <% end %>
-    </ul>
-  <% end %>
-
-  <h3>Images Alts</h3>
-  <p>Toutes les images doivent avoir un alt.</p>
-  <% if @no_image_alt == 1 %>
-    <p>Toutes les images de cette page ont un alt.</p>
-  <% else %>
-    <p>Ces images n'ont pas de alt: </p>
-    <ul>
-      <% @image_alts.each do |img| %>
-        <li><%= img %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
-</div>
-</body>
-</html>
