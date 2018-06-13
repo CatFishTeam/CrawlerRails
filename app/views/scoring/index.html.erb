@@ -2,11 +2,11 @@
 
 <h1>Scoring</h1>
 
-<%= form_tag("/scoring/search", method: :get) do %>
+<%= form_tag("/scoring/search") do %>
   <div class="form-group">
     <input type="text" name="url" class="form-control" id="urlForm" placeholder="URL à analyser">
   </div>
 <% end %>
 
-<div class="result"></div>
+<div class="scoring-loader"></div>
 
