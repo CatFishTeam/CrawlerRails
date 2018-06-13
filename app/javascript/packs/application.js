@@ -15,6 +15,7 @@ import toastr from 'toastr'
 
 // JS files
 import './pagespeed';
+import './chart'
 
 //CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
