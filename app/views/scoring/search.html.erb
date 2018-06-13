@@ -10,22 +10,28 @@
 <div class="scoring-loader"></div>
 
 <div class="score">
-  Score :
-  <% if @score < 50 %> <span class="bad"> <%= @score %> </span>
-  <% elsif @score >= 50 && @score < 75 %> <span class="average"> <%= @score %> </span>
-  <% else %> <span class="good"> <%= @score %> </span>
-  <% end %>  / 100<br>
+  <% if defined? @score %>
+    Score :
+    <% if @score < 50 %> <span class="bad"> <%= @score %> </span>
+    <% elsif @score >= 50 && @score < 75 %> <span class="average"> <%= @score %> </span>
+    <% else %> <span class="good"> <%= @score %> </span>
+    <% end %>  / 100<br>
+  <% end %>
   <%= @res["id"] %>
 </div>
 <div class="recommandations">
   <h3>Nos recommandations</h3>
   <% @results.each do |result| -%>
-    <h4><%= result[1]["localizedRuleName"] %></h4>
+    <% if defined? result[1]["localizedRuleName"] %>
+      <h4><%= result[1]["localizedRuleName"] %></h4>
+    <% end %>
     <div>
-      <% if result[1]["summary"]["format"].include? "En savoir plus" %>
-        <%= result[1]["summary"]["format"].slice(0..(result[1]["summary"]["format"].index('. '))) %>
-      <% else %>
-        <%= result[1]["summary"]["format"] %>
+      <% if defined? result[1]["summary"]["format"] %>
+        <% if result[1]["summary"]["format"].include? "En savoir plus" %>
+          <%= result[1]["summary"]["format"].slice(0..(result[1]["summary"]["format"].index('. '))) %>
+        <% else %>
+          <%= result[1]["summary"]["format"] %>
+        <% end %>
       <% end %>
     </div>
   <% end -%>

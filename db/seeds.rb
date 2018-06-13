@@ -13,5 +13,5 @@ User.create!([
 ])
 
 Website.create!([
-    {url: "https://google.fr/", user_id: 1}
+    {url: "http://maelmayon.fr/", user_id: 1}
 ])

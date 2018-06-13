@@ -30,6 +30,9 @@ class SpiderController < ApplicationController
       end
     end
 
+    if count === 0
+      count = 1
+    end
     score = (score * 100) / (count * 3)
 
     website.score_spider = score
