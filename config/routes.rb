@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post '/crawltemp/search', to: 'crawltemp#search'
 
   get 'add-website', to: 'home#addWebsite'
+  get 'removeWebsite/:id', to: 'home#removeWebsite'
 
 end

@@ -1,15 +1,29 @@
 <div class="container">
-        <h1>Add a website</h1>
-        <form class="mt-5" action="add-website" name="addWebsite">
+        <h1>Your websites</h1>
+        <hr>
+        <h4 class="mt-5">Add a website</h4>
+        <form action="add-website" name="addWebsite">
             <div class="form-group">
                 <input type="text" class="form-control"  placeholder="Entrer une adresse" name="url">
             </div>
+            <button type="submit" class="btn btn-primary">Ajouter</button>
         </form>
-        <% @websites.each do |website| %>
-            <a href="<%= website.url %>"><%= website.url %></a>
-        <% end %>
-
-<!--  <div class="test">-->
-<!--    <div class="loader"></div>-->
-<!--  </div>-->
+        <hr>
+        <h4 class="mt-5">List website</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Url</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @websites.each do |website| %>
+                <tr>
+                    <td><a href="http://<%= website.url %>"><%= website.url %></a></td>
+                    <td class="text-right"><a class="btn btn-danger text-white" href="/removeWebsite/<%= website.id %>">Remove</a></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
 </div>
