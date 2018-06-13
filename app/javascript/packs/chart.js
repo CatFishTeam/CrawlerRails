@@ -42,27 +42,29 @@ var myChart = new Chart(ctx, {
 */
 
 // And for a doughnut chart
-var myChart = new Chart(ctx, {
-    type:"doughnut",
-    data: {
-        datasets:[{
-            data:[chartPercent,  100 - chartPercent],
-            backgroundColor:["rgb(0, 102, 204)"]
-        }]
-    },
-    options:{
-        tooltips: {
-            callbacks: {
-                label: function(tooltipItem, data) {
-                    var label = ' ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';
-                    return label;
-                }
-            }
-        },
-        animation: {
-            //easing: 'easeInElastic',
-        },
-    }
-});
+if (typeof chartPercent !== 'undefined') {
 
+    var myChart = new Chart(ctx, {
+        type:"doughnut",
+        data: {
+            datasets:[{
+                data:[chartPercent,  100 - chartPercent],
+                backgroundColor:["rgb(0, 102, 204)"]
+            }]
+        },
+        options:{
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem, data) {
+                        var label = ' ' + data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index] + '%';
+                        return label;
+                    }
+                }
+            },
+            animation: {
+                //easing: 'easeInElastic',
+            },
+        }
+    });
 //TODO CHANGE COLOR IN FUNCTION OF RES
+}
