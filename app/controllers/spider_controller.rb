@@ -2,12 +2,17 @@ class SpiderController < ApplicationController
   include ApplicationHelper
 
   def index
-
+    @websites = Website.where(user_id: current_user.id)
   end
 
-  def search()
+  def search
     require 'spider'
-    url = params[:q]
+    website = params[:url]
+    website = Website.find(website)
+
+    url = website.url
+
+    datetime = Time.now
 
     @nodes = []
     Spider.start_at(url) do |s|
@@ -15,10 +20,21 @@ class SpiderController < ApplicationController
 
       s.on(:every) do |a_url, resp, prior_url|
         puts "#{a_url} | #{prior_url} : #{resp.code}"
-        SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => 1)
+        SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => website, :created_at => datetime)
 
         @nodes << {:source => prior_url, :dest => a_url, :code => resp.code}
       end
     end
+  end
+
+  def list
+    website = params[:url]
+    website = Website.find(website)
+
+    @spiderResults = SpiderResult.where(website: website).order(created_at: :desc)
+
+    puts @spiderResults
+
+
   end
 end

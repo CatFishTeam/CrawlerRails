@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2018_06_13_085526) do
 
   create_table "spider_results", force: :cascade do |t|
     t.string "urlFrom"
-    t.text "urlTo"
+    t.string "urlTo"
     t.integer "response"
     t.integer "website_id"
     t.datetime "created_at", null: false
