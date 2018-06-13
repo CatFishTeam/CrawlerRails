@@ -15,9 +15,9 @@
             <% @websites.each do |website| %>
                 <tr>
                     <td><a href="<%= website.url %>"><%= website.url %></a></td>
-                    <td class="text-center"><i class="fas fa-check green"></i></td>
-                    <td class="text-center"><i class="fas fa-times red"></i></td>
-                    <td class="text-center">-</td>
+                    <td class="text-center"><% if website.validate_page_speed != nil %><%= raw website.validate_page_speed ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %><% else %>-<% end %></td>
+                    <td class="text-center"><% if website.validate_spider != nil %><%= raw website.validate_spider ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %><% else %>-<% end %></td>
+                    <td class="text-center"><% if website.validate_spider != nil %><%= raw website.validate_spider ? '<i class="fas fa-check green"></i>' : '<i class="fas fa-times red"></i>' %><% else %>-<% end %></td>
                 </tr>
             <% end %>
             </tbody>
