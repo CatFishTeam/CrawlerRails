@@ -7,7 +7,7 @@ require 'rest-client';
 class CrawltempController < ApplicationController
 
   def index
-
+    @websites = Website.where(user_id: current_user.id)
   end
 
   def search
@@ -21,6 +21,8 @@ class CrawltempController < ApplicationController
     w3c= "https://validator.w3.org/nu/?doc="
 
     url = params[:url]
+    website = Website.find(url)
+    url = website.url
     html = RestClient.get(url)
     w3c_html = RestClient.get(w3c+url)
     doc = Nokogiri::HTML(html)
@@ -33,14 +35,14 @@ class CrawltempController < ApplicationController
     end
     @w3c_result = w3c_count
 
+    W3c.create(fault: w3c_count, website: website)
     #metatag traitement
     @meta_desc = doc.search("meta[name='description']").map{ |meta| meta }
     @meta_title = doc.css('title').map {|title| title }
     @meta_content = doc.search("meta[charset]").map{ |meta| meta }
     @meta_viewport = doc.search("meta[name='viewport']").map { |meta| meta }
 
-
-  #image traitement
+    #image traitement
     all_image_urls = doc.css('img').map{ |img| img['src'] if not img[:src].match(/^\.|\.jpg$|\.gif$|.png$/) }
     @all_image_urls = all_image_urls.compact
     if !@all_image_urls[0]
@@ -61,5 +63,34 @@ class CrawltempController < ApplicationController
     else
         @h1_error = "Il y a bien un seul h1 sur cette page."
     end
+
+    if @meta_title[0]
+      data_title = 1
+    else
+      data_title = 0
+    end
+    if @meta_desc[0]
+      data_desc = 1
+    else
+      data_desc = 0
+    end
+    if @meta_viewport[0]
+      data_viewport = 1
+    else
+      data_viewport = 0
+    end
+    if @meta_content[0]
+      data_content = 1
+    else
+      data_content = 0
+    end
+    if @h1_error == "Il y a bien un seul h1 sur cette page."
+      data_h1 = 1
+    else
+      data_h1 = 0
+    end
+
+    MetadataVerif.create(title: data_title, viewport: data_viewport, description: data_desc, charset: data_content, h1:data_h1, website: website)
+
   end
 end
