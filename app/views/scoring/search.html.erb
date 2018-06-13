@@ -7,14 +7,20 @@
 <% end %>
 
 <div class="scoring-loader"></div>
-<canvas id="myChart"></canvas>
-<div class="score">
-  Score :
-  <% if @score < 50 %> <span class="bad"> <%= @score %> </span>
-  <% elsif @score >= 50 && @score < 75 %> <span class="average"> <%= @score %> </span>
-  <% else %> <span class="good"> <%= @score %> </span>
-  <% end %>  / 100<br>
-  <%= @res["id"] %>
+<div class="row">
+    <div class="score col">
+        <span>
+            Score :
+            <% if @score < 50 %> <span class="bad"> <%= @score %> </span>
+                <% elsif @score >= 50 && @score < 75 %> <span class="average"> <%= @score %> </span>
+                <% else %> <span class="good"> <%= @score %> </span>
+                <% end %>  / 100<br>
+            <%= @res["id"] %>
+        </span>
+    </div>
+    <div class="col">
+        <canvas id="myChart"></canvas>
+    </div>
 </div>
 <div class="recommandations">
   <h3>Nos recommandations</h3>
