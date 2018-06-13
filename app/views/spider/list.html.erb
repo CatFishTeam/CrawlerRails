@@ -1,0 +1,35 @@
+<%= javascript_pack_tag 'hello_erb' %>
+
+<table class="table">
+  <thead>
+    <th>URL source</th>
+    <th>URL de destination</th>
+    <th>Reponse</th>
+    <th>Date</th>
+  </thead>
+  <tbody>
+
+  <% @spiderResults.each do |result| %>
+  <tr>
+    <td>
+      <% if result[:urlFrom] != nil %>
+        <a href="<%= result[:urlFrom] %>"><%= result[:urlFrom] %></a>
+      <% else %>
+        /
+      <% end %>
+    </td>
+    <td><a href="<%= result[:urlTo] %>"><%= result[:urlTo] %></a></td>
+    <td>
+      <div class="alert alert-<%= convert_http_code(result[:response]) %>" role="alert">
+        <%= result[:response] %>
+      </div>
+    </td>
+    <td>
+      <%= result[:created_at] %>
+    </td>
+  </tr>
+  <% end %>
+    <td></td>
+    <td></td>
+  </tbody>
+</table>

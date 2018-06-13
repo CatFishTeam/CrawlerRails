@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/scoring/search', to: 'scoring#search'
   get 'spider', to: 'spider#index'
   post '/spider/search', to: 'spider#search'
+  post '/spider/list', to: 'spider#list'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'crawltemp', to: 'crawltemp#index'
