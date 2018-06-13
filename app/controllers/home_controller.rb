@@ -9,9 +9,8 @@ class HomeController < ApplicationController
 
   def addWebsite
     url = params['url']
-    puts url
     if not url =~ /(https:\/\/)?(www.)?.+\..+/
-      flash[:warning] = "URL NON VALIDE"
+      flash[:warning] = "Votre url n'est pas valide !"
     else
       @wbesite = Website.create(url: url, user: current_user)
     end
