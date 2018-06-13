@@ -1,6 +1,28 @@
 <div class="container">
         <h1>Your websites</h1>
         <hr>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Url</th>
+                <th scope="col" class="text-center">Scoring</th>
+                <th scope="col" class="text-center">Spider</th>
+                <th scope="col" class="text-center">W3C</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @websites.each do |website| %>
+                <tr>
+                    <td><a href="<%= website.url %>"><%= website.url %></a></td>
+                    <td class="text-center"><i class="fas fa-check green"></i></td>
+                    <td class="text-center"><i class="fas fa-times red"></i></td>
+                    <td class="text-center">-</td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+
         <h4 class="mt-5">Add a website</h4>
         <form action="add-website" name="addWebsite">
             <div class="form-group">
