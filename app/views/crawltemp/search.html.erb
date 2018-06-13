@@ -22,22 +22,22 @@
   <p>Nombre de warnings et d'erreurs W3C sur cette page : <%= @w3c_result %> </p>
   <h3>Meta Data</h3>
   <% if @meta_title[0] %>
-    <p>Title: It's Good</p>
+    <p>Title: Il y a bien un titre: "<%= @meta_title[0] %>"</p>
   <% else %>
     <p>Title: Pas de Titre</p>
   <% end %>
   <% if @meta_content[0] %>
-    <p>Charset: It's Good</p>
+    <p>Charset: Il y a bien un charset: "<%= @meta_content[0] %>"</p>
   <% else %>
     <p>Charset: Pas de charset</p>
   <% end %>
   <% if @meta_desc[0] %>
-    <p>Description: It's Good</p>
+    <p>Description: Il y a bien une description: "<%= @meta_description[0] %>"</p>
   <% else %>
     <p>Description: Pas de Descritpion</p>
   <% end %>
   <% if @meta_viewport[0] %>
-    <p>Viewport: It's Good</p>
+    <p>Viewport: Il y a bien un viewport: "<%= @meta_viewport[0] %>"</p>
   <% else %>
     <p>Viewport: Pas de Viewport</p>
   <% end %>
