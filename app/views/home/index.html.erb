@@ -20,7 +20,7 @@
             <tbody>
             <% @websites.each do |website| %>
                 <tr>
-                    <td><a href="http://<%= website.url %>"><%= website.url %></a></td>
+                    <td><a href="<%= website.url %>"><%= website.url %></a></td>
                     <td class="text-right"><a class="btn btn-danger text-white" href="/removeWebsite/<%= website.id %>">Remove</a></td>
                 </tr>
             <% end %>
