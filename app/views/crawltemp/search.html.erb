@@ -10,37 +10,195 @@
 </head>
 
 <body>
-<% flash.each do |name, msg| %>
+<div class="container">
+  <% flash.each do |name, msg| %>
   <%= content_tag(:div, msg, class: "alert alert-#{name}") %>
 <% end %>
 
-<p class="container">
   <%= yield %>
+  <%= @score %>
   <h3>H1</h3>
-  <p><%= @h1_error %></p>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Actuellement</th>
+      <th scope="col">Précédemment</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><p><%= @h1_error %></p></td>
+      <td>
+        <% @metaResults.each do |meta| %>
+          <% if meta.h1 == 1 %>
+            <p>Il y avait déjà un h1</p>
+          <% else %>
+            <p>Il n'y avait pas de h1</p>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if @h1_error == "Il y a bien un seul h1 sur cette page." %>
+          <i class="fas fa-check green"></i>
+        <% else %>
+          <i class="fas fa-times red"></i>
+        <% end %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
   <h3>W3C</h3>
-  <p>Nombre de warnings et d'erreurs W3C sur cette page : <%= @w3c_result %> </p>
-  <h3>Meta Data</h3>
-  <% if @meta_title[0] %>
-    <p>Title: Il y a bien un titre: "<%= @meta_title[0] %>"</p>
-  <% else %>
-    <p>Title: Pas de Titre</p>
-  <% end %>
-  <% if @meta_content[0] %>
-    <p>Charset: Il y a bien un charset: "<%= @meta_content[0] %>"</p>
-  <% else %>
-    <p>Charset: Pas de charset</p>
-  <% end %>
-  <% if @meta_desc[0] %>
-    <p>Description: Il y a bien une description: "<%= @meta_description[0] %>"</p>
-  <% else %>
-    <p>Description: Pas de Descritpion</p>
-  <% end %>
-  <% if @meta_viewport[0] %>
-    <p>Viewport: Il y a bien un viewport: "<%= @meta_viewport[0] %>"</p>
-  <% else %>
-    <p>Viewport: Pas de Viewport</p>
-  <% end %>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Actuellement</th>
+      <th scope="col">Précédemment</th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><p>Nombre d'erreurs W3C</p></td>
+      <td><p><%= @w3c_result %></p></td>
+      <td>
+        <% @w3c_results.each do |w3c| %>
+          <%= w3c.fault %>
+
+      </td>
+      <td>
+          <% if @w3c_result < w3c.fault %>
+            <i class="fas fa-check green"></i>
+          <% else %>
+            <i class="fas fa-times red"></i>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+<h3>Meta Data</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Metadata</th>
+    <th scope="col">Actuellement</th>
+    <th scope="col">Précédemment</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><p>Title</p></td>
+    <td>
+      <% if @meta_title[0] %>
+        <p>Il y a bien un titre:<br>"<%= @meta_title[0] %>"</p>
+      <% else %>
+        <p>Pas de Titre</p>
+      <% end %>
+    </td>
+    <td>
+      <% @metaResults.each do |meta| %>
+        <% if meta.title == 1 %>
+          <p>Il y avait déjà un titre</p>
+        <% else %>
+          <p>Il n'y avait pas de titre</p>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if @meta_title[0] %>
+        <i class="fas fa-check green"></i>
+      <% else %>
+        <i class="fas fa-times red"></i>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Charset</p></td>
+    <td>
+      <% if @meta_content[0] %>
+        <p>Il y a bien un charset:<br>"<%= @meta_content[0] %>"</p>
+      <% else %>
+        <p>Pas de charset</p>
+      <% end %>
+    </td>
+    <td>
+      <% @metaResults.each do |meta| %>
+        <% if meta.charset == 1 %>
+          <p>Il y avait déjà un charset</p>
+        <% else %>
+          <p>Il n'y avait pas de charset</p>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if @meta_content[0] %>
+        <i class="fas fa-check green"></i>
+      <% else %>
+        <i class="fas fa-times red"></i>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Description</p></td>
+    <td>
+      <% if @meta_desc[0] %>
+        <p>Il y a bien une description:<br>"<%= @meta_description[0] %>"</p>
+      <% else %>
+        <p>Pas de Descritpion</p>
+      <% end %>
+    </td>
+    <td>
+      <% @metaResults.each do |meta| %>
+        <% if meta.description == 1 %>
+          <p>Il y avait déjà une description</p>
+        <% else %>
+          <p>Il n'y avait pas de description</p>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if @meta_desc[0] %>
+        <i class="fas fa-check green"></i>
+      <% else %>
+        <i class="fas fa-times red"></i>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td><p>Viewport</p></td>
+    <td>
+      <% if @meta_viewport[0] %>
+        <p>Il y a bien un viewport:<br>"<%= @meta_viewport[0] %>"</p>
+      <% else %>
+        <p>Pas de Viewport</p>
+      <% end %>
+    </td>
+    <td>
+      <% @metaResults.each do |meta| %>
+        <% if meta.viewport == 1 %>
+          <p>Il y avait déjà un viewport</p>
+        <% else %>
+          <p>Il n'y avait pas de viewport</p>
+        <% end %>
+      <% end %>
+    </td>
+    <td>
+      <% if @meta_viewport[0] %>
+        <i class="fas fa-check green"></i>
+      <% else %>
+        <i class="fas fa-times red"></i>
+      <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
 
   <h3>Images extensions</h3>
   <p>Vos images doivent avoir comme extension soit .jpg, soit .png, soit .gif.</p>

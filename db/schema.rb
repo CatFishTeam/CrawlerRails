@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_13_085526) do
+ActiveRecord::Schema.define(version: 2018_06_13_093421) do
+
+  create_table "metadata_verifs", force: :cascade do |t|
+    t.integer "title"
+    t.integer "viewport"
+    t.integer "description"
+    t.integer "charset"
+    t.integer "h1"
+    t.integer "website_id"
+    t.index ["website_id"], name: "index_metadata_verifs_on_website_id"
+  end
 
   create_table "page_speed", force: :cascade do |t|
     t.integer "score"
@@ -43,6 +53,12 @@ ActiveRecord::Schema.define(version: 2018_06_13_085526) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "w3cs", force: :cascade do |t|
+    t.integer "fault"
+    t.integer "website_id"
+    t.index ["website_id"], name: "index_w3cs_on_website_id"
   end
 
   create_table "websites", force: :cascade do |t|
