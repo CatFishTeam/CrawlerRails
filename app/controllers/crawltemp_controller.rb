@@ -133,7 +133,6 @@ class CrawltempController < ApplicationController
 
 
     score_total = score * 100 / 70
-    @score = score_total
     website.score_w3c = score_total
     website.save
   end
