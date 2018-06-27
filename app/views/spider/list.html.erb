@@ -1,33 +1,42 @@
-<table class="table">
-  <thead>
-    <th>URL source</th>
-    <th>URL de destination</th>
-    <th>Reponse</th>
-    <th>Date</th>
-  </thead>
-  <tbody>
+<% n = 0 %>
+<% @dates.each do |dateRow| %>
+  <% n = n + 1 %>
+  <div class="card">
+    <h5 class="card-header">
+      <a data-toggle="collapse" href="#run<%= n %>" role="button" aria-expanded="false" aria-controls="run<%= n %>">
+        <%= dateRow[:created_at] %>
+      </a>
+    </h5>
+    <div class="card-body collapse" id="run<%= n %>">
+      <table class="table">
+        <thead>
+        <th>URL source</th>
+        <th>URL de destination</th>
+        <th>Reponse</th>
+        </thead>
+        <tbody>
 
-  <% @spiderResults.each do |result| %>
-  <tr>
-    <td>
-      <% if result[:urlFrom] != nil %>
-        <a href="<%= result[:urlFrom] %>" target="_blank"><%= result[:urlFrom] %></a>
-      <% else %>
-        /
-      <% end %>
-    </td>
-    <td><a href="<%= result[:urlTo] %>" target="_blank"><%= result[:urlTo] %></a></td>
-    <td>
-      <div class="alert alert-<%= convert_http_code(result[:response]) %>" role="alert">
-        <%= result[:response] %>
-      </div>
-    </td>
-    <td>
-      <%= result[:created_at] %>
-    </td>
-  </tr>
-  <% end %>
-    <td></td>
-    <td></td>
-  </tbody>
-</table>
+        <% @spiderResults.each do |result| %>
+          <% if result[:created_at] == dateRow[:created_at] %>
+            <tr>
+              <td>
+                <% if result[:urlFrom] != nil %>
+                  <a href="<%= result[:urlFrom] %>" target="_blank"><%= result[:urlFrom] %></a>
+                <% else %>
+                  /
+                <% end %>
+              </td>
+              <td><a href="<%= result[:urlTo] %>" target="_blank"><%= result[:urlTo] %></a></td>
+              <td>
+                <div class="alert alert-<%= convert_http_code(result[:response]) %>" role="alert">
+                  <%= result[:response] %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

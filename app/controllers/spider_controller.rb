@@ -43,6 +43,8 @@ class SpiderController < ApplicationController
     website = params[:url]
     website = Website.find(website)
 
+    @dates = SpiderResult.select(:created_at).order(created_at: :desc).distinct
+
     @spiderResults = SpiderResult.where(website: website).order(created_at: :desc)
 
   end
