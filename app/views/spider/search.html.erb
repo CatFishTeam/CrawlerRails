@@ -1,29 +1,41 @@
+<div class="chart-container" style="position: relative; width: 70%; margin: auto;">
+  <canvas id="chartSpider"></canvas>
+</div>
+
 <table class="table">
   <thead>
-    <th>URL source</th>
-    <th>URL de destination</th>
-    <th>Reponse</th>
+  <th>URL source</th>
+  <th>URL de destination</th>
+  <th>Reponse</th>
   </thead>
   <tbody>
 
   <% @nodes.each do |node| %>
-  <tr>
-    <td>
-      <% if node[:source] != nil %>
-        <a href="<%= node[:source] %>" target="_blank"><%= node[:source] %></a>
-      <% else %>
-        /
-      <% end %>
-    </td>
-    <td><a href="<%= node[:dest] %>" target="_blank"><%= node[:dest] %></a></td>
-    <td>
-      <div class="alert alert-<%= convert_http_code(node[:code]) %>" role="alert">
-        <%= node[:code] %>
-      </div>
-    </td>
-  </tr>
+    <tr>
+      <td>
+        <% if node[:source] != nil %>
+          <a href="<%= node[:source] %>" target="_blank"><%= node[:source] %></a>
+        <% else %>
+          /
+        <% end %>
+      </td>
+      <td><a href="<%= node[:dest] %>" target="_blank"><%= node[:dest] %></a></td>
+      <td>
+        <div class="alert alert-<%= convert_http_code(node[:code]) %>" role="alert">
+          <%= node[:code] %>
+        </div>
+      </td>
+    </tr>
   <% end %>
-    <td></td>
-    <td></td>
+  <td></td>
+  <td></td>
   </tbody>
 </table>
+<script>
+    let data = []
+    let labels = []
+    <% @codes.each do |key, value| %>
+    data.push(<%= value %>)
+    labels.push(<%= key %>)
+    <% end %>
+</script>

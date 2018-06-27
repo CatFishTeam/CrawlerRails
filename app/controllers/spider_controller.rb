@@ -17,6 +17,8 @@ class SpiderController < ApplicationController
     count = 0
     score = 0
 
+    @codes = Hash.new
+
     @nodes = []
     Spider.start_at(url) do |s|
       s.add_url_check {|a_url| a_url =~ %r{^#{url}.*} }
@@ -25,6 +27,13 @@ class SpiderController < ApplicationController
         SpiderResult.create(:urlFrom => prior_url, :urlTo => a_url, :response =>resp.code, :website => website, :created_at => datetime)
         count += 1
         score += score_http_code(resp.code)
+
+        if @codes.key?("#{resp.code}")
+          @codes["#{resp.code}"] += 1
+        else
+          @codes["#{resp.code}"] = 1
+        end
+
 
         @nodes << {:source => prior_url, :dest => a_url, :code => resp.code}
       end
