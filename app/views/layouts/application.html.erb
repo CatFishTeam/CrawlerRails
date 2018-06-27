@@ -17,6 +17,9 @@
         <%= javascript_pack_tag 'application' %>
         <script>
             <% flash.each do |name, msg| %>
+                <% if name == 'alert'  %>
+                    <% name = "error" %>
+                <% end %>
                 toastr.<%= name %>('<%= msg %>')
             <% end %>
         </script>

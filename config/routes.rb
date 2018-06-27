@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root 'home#index'
   get 'home/about'
   get 'scoring', to: 'scoring#index'
@@ -17,3 +18,4 @@ Rails.application.routes.draw do
   get 'removeWebsite/:id', to: 'home#removeWebsite'
 
 end
+
