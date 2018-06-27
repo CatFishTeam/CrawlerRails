@@ -2,6 +2,7 @@ import Chart from 'chart.js';
 window.Chart = Chart
 
 var ctx = document.getElementById("myChart");
+var chartSpiderCtx = document.getElementById("chartSpider");
 /*
 var myChart = new Chart(ctx, {
     type: 'bar',
@@ -68,3 +69,15 @@ if (typeof chartPercent !== 'undefined') {
     });
 //TODO CHANGE COLOR IN FUNCTION OF RES
 }
+
+var chartSpider = new Chart(chartSpiderCtx, {
+    type:"doughnut",
+    data: {
+        datasets:[{
+            data: data,
+            backgroundColor:["rgb(0, 102, 204)"]
+        }],
+
+        labels: labels
+    }
+});
