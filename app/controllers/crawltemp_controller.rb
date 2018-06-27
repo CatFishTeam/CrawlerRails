@@ -11,12 +11,7 @@ class CrawltempController < ApplicationController
   end
 
   def search
-    #page = Nokogiri::HTML(open("http://www.google.fr/"))
-    #@crawl = page.css('title')
-    #@crawl.to_xhtml(indent:3, indent_text:".")
 
-    img_urls = Array.new
-    img_captions = Array.new
     h1 = Array.new
     w3c= "https://validator.w3.org/nu/?doc="
 
@@ -27,13 +22,14 @@ class CrawltempController < ApplicationController
     w3c_html = RestClient.get(w3c+url)
     doc = Nokogiri::HTML(html)
     w3c_doc = Nokogiri::HTML(w3c_html)
-
     score = 0
+
     #W3C
     w3c_count = 0
     w3c_doc.css('#results ol li').each do |s|
       w3c_count = w3c_count + 1
     end
+
     @w3c_result = w3c_count
     if w3c_count == 0
       score += 20
@@ -47,7 +43,6 @@ class CrawltempController < ApplicationController
       score += 0
     end
 
-    W3c.create(fault: w3c_count, website: website)
     #metatag traitement
     @meta_desc = doc.search("meta[name='description']").map{ |meta| meta }
     @meta_title = doc.css('title').map {|title| title }
@@ -126,10 +121,10 @@ class CrawltempController < ApplicationController
       data_h1 = 0
     end
 
+    @w3c_results = W3c.where(website:website).order(id: :desc).limit(1).offset(1)
+    @metaResults = MetadataVerif.where(website: website).order(id: :desc).limit(1).offset(1)
     MetadataVerif.create(title: data_title, viewport: data_viewport, description: data_desc, charset: data_content, h1:data_h1, website: website)
-    @metaResults = MetadataVerif.where(website: website).order(id: :desc).limit(1)
     W3c.create(fault:@w3c_result, website:website)
-    @w3c_results = W3c.where(website:website).order(id: :desc).limit(1)
 
 
     score_total = score * 100 / 70
