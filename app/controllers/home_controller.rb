@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
       @websites = Website.where(user: current_user)
+      UserMailer.welcome_email(current_user).deliver_now
     else
       redirect_to "/users/sign_in"
     end
