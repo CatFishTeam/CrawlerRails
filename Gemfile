@@ -76,3 +76,4 @@ gem "devise-i18n"
 
 gem "rest-client"
 gem "spider", "~> 0.5.3"
+gem "trestle"
