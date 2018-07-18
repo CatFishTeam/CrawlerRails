@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>Your websites</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Url</th>
+            <th scope="col" class="text-center">Scoring</th>
+            <th scope="col" class="text-center">Spider</th>
+            <th scope="col" class="text-center">W3C</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% $stats.each do |stat| %>
+            <tr>
+                <td><a href="<%= stat.website.url %>" target="_blank"><%= stat.website.url %></a></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
