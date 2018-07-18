@@ -1,0 +1,37 @@
+<div class="container mt-5">
+    <h3 class="text-center">Website : <a href="<%= @stats.first.website.url %>" target="_blank"><%= @stats.first.website.url %></a></h3>
+    <canvas id="stats"></canvas>
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th scope="col" class="text-center">Date</th>
+            <th scope="col" class="text-center">Scoring</th>
+            <th scope="col" class="text-center">Spider</th>
+            <th scope="col" class="text-center">W3C</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @stats.each do |stat| %>
+            <tr>
+                <td class="text-center"><%= stat.date %></td>
+                <td class="text-center"><%= stat.scorePerf %></td>
+                <td class="text-center"><%= stat.scoreSpider %></td>
+                <td class="text-center"><%= stat.scoreW3C %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+    <script>
+        console.log(<%= @stats.to_json.html_safe %>)
+        var labels = [];
+        var scoresPerf= [];
+        var scoresSpider = [];
+        var scoresW3C = [];
+        <% @stats.each do |stat| %>
+            labels.push("<%= stat.date %>".substring(0, 10));
+            scoresPerf.push("<%= stat.scorePerf %>");
+            scoresSpider.push("<%= stat.scoreSpider %>");
+            scoresW3C.push("<%= stat.scoreW3C %>");
+        <% end %>
+    </script>
+</div>

@@ -13,5 +13,36 @@ User.create!([
 ])
 
 Website.create!([
-    {url: "http://maelmayon.fr/", user_id: 1}
+    {url: "http://maelmayon.fr/", user_id: 1},
+    {url: "https://trestle.io/", user_id: 1}
+])
+
+Stat.create!([
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-18 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-17 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-16 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-15 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-14 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-13 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-12 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-11 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-10 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-09 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-09 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-07 05:14:19.279"},
+    {website_id: 1, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-06 05:14:19.279"},
+    #deuxieme
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-18 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-17 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-16 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-15 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-14 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-13 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-12 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-11 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-10 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-09 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-09 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-07 05:14:19.279"},
+    {website_id: 2, scorePerf: rand(70...99), scoreSpider: rand(70...99), scoreW3C: rand(70...99), date: "2018-07-06 05:14:19.279"},
 ])
