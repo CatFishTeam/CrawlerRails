@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'add-website', to: 'home#addWebsite'
   get 'removeWebsite/:id', to: 'home#removeWebsite'
 
-  get '/stats', to: 'stats#index'
+  get '/stats/:id', to: 'stats#index'
 
 end
 
