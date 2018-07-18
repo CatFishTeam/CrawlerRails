@@ -18,6 +18,12 @@ Website.create!([
 
 Stat.create!([
     {website_id: 1, scorePerf: 87, scoreSpider: 98, scoreW3C: 85, date: "2018-07-18 05:14:19.279"},
-    {website_id: 1, scorePerf: 81, scoreSpider: 92, scoreW3C: 100, date: "2018-07-18 05:14:19.279"},
-    {website_id: 1, scorePerf: 74, scoreSpider: 80, scoreW3C: 84, date: "2018-07-18 05:14:19.279"}
+    {website_id: 1, scorePerf: 81, scoreSpider: 84, scoreW3C: 98, date: "2018-07-17 05:14:19.279"},
+    {website_id: 1, scorePerf: 79, scoreSpider: 72, scoreW3C: 96, date: "2018-07-16 05:14:19.279"},
+    {website_id: 1, scorePerf: 74, scoreSpider: 87, scoreW3C: 80, date: "2018-07-15 05:14:19.279"},
+    {website_id: 1, scorePerf: 82, scoreSpider: 92, scoreW3C: 78, date: "2018-07-14 05:14:19.279"},
+    {website_id: 1, scorePerf: 89, scoreSpider: 96, scoreW3C: 74, date: "2018-07-13 05:14:19.279"},
+    {website_id: 1, scorePerf: 93, scoreSpider: 85, scoreW3C: 78, date: "2018-07-12 05:14:19.279"},
+    {website_id: 1, scorePerf: 84, scoreSpider: 77, scoreW3C: 80, date: "2018-07-11 05:14:19.279"},
+    {website_id: 1, scorePerf: 74, scoreSpider: 82, scoreW3C: 76, date: "2018-07-10 05:14:19.279"}
 ])
