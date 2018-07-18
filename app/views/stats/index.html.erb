@@ -1,11 +1,10 @@
-<div class="container">
-    <h1>Your websites</h1>
+<div class="container mt-5">
+    <h2>Your website : <a href="<%= @stats.first.website.url %>" target="_blank"><%= @stats.first.website.url %></a></h2>
     <div id="stats"></div>
-    <table class="table">
+    <table class="table mt-5">
         <thead>
         <tr>
-            <th scope="col">Date</th>
-            <th scope="col">Url</th>
+            <th scope="col" class="text-center">Date</th>
             <th scope="col" class="text-center">Scoring</th>
             <th scope="col" class="text-center">Spider</th>
             <th scope="col" class="text-center">W3C</th>
@@ -14,11 +13,10 @@
         <tbody>
         <% @stats.each do |stat| %>
             <tr>
-                <td><%= stat.date %></td>
-                <td><a href="<%= stat.website.url %>" target="_blank"><%= stat.website.url %></a></td>
-                <td><%= stat.scoreW3C %></td>
-                <td><%= stat.scoreSpider %></td>
-                <td><%= stat.scorePerf %></td>
+                <td class="text-center"><%= stat.date %></td>
+                <td class="text-center"><%= stat.scoreW3C %></td>
+                <td class="text-center"><%= stat.scoreSpider %></td>
+                <td class="text-center"><%= stat.scorePerf %></td>
             </tr>
         <% end %>
         </tbody>
