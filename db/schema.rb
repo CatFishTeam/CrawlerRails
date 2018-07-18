@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 2018_07_17_234954) do
   end
 
   create_table "stats", force: :cascade do |t|
-    t.integer "websites_id"
     t.integer "scorePerf"
     t.integer "scoreSpider"
     t.integer "scoreW3C"
     t.datetime "date"
-    t.index ["websites_id"], name: "index_stats_on_websites_id"
+    t.integer "website_id"
+    t.index ["website_id"], name: "index_stats_on_website_id"
   end
 
   create_table "users", force: :cascade do |t|

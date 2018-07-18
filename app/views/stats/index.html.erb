@@ -4,6 +4,7 @@
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">Date</th>
             <th scope="col">Url</th>
             <th scope="col" class="text-center">Scoring</th>
             <th scope="col" class="text-center">Spider</th>
@@ -11,9 +12,13 @@
         </tr>
         </thead>
         <tbody>
-        <% $stats.each do |stat| %>
+        <% @stats.each do |stat| %>
             <tr>
+                <td><%= stat.date %></td>
                 <td><a href="<%= stat.website.url %>" target="_blank"><%= stat.website.url %></a></td>
+                <td><%= stat.scoreW3C %></td>
+                <td><%= stat.scoreSpider %></td>
+                <td><%= stat.scorePerf %></td>
             </tr>
         <% end %>
         </tbody>

@@ -5,7 +5,6 @@ class CreateSpiderResults < ActiveRecord::Migration[5.2]
       t.string :urlTo
       t.integer :response
       t.references :website, foreign_key: true
-
       t.timestamps
     end
   end
