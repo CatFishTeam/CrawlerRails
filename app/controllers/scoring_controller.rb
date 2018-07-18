@@ -28,5 +28,9 @@ class ScoringController < ApplicationController
 
     website.score_page_speed = @score
     website.save
+
+    @stat = Stat.where(website: website).first
+    @stat.scorePerf = @score
+    @stat.save
   end
 end

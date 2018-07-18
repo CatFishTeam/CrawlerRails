@@ -46,6 +46,10 @@ class SpiderController < ApplicationController
 
     website.score_spider = score
     website.save
+
+    @stat = Stat.where(website: website).first
+    @stat.scoreSpider = score
+    @stat.save
   end
 
   def list
