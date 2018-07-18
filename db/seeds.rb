@@ -15,3 +15,9 @@ User.create!([
 Website.create!([
     {url: "http://maelmayon.fr/", user_id: 1}
 ])
+
+Stat.create!([
+    {website_id: 1, scorePerf: 87, scoreSpider: 98, scoreW3C: 85, date: "2018-07-18 05:14:19.279"},
+    {website_id: 1, scorePerf: 81, scoreSpider: 92, scoreW3C: 100, date: "2018-07-18 05:14:19.279"},
+    {website_id: 1, scorePerf: 74, scoreSpider: 80, scoreW3C: 84, date: "2018-07-18 05:14:19.279"}
+])

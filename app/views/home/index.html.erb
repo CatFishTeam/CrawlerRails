@@ -42,6 +42,7 @@
             <% @websites.each do |website| %>
                 <tr>
                     <td><a href="<%= website.url %>" target="_blank"><%= website.url %></a></td>
+                    <td class="text-right"><a class="btn btn-primary text-white" href="/stats/<%= website.id %>">Stats</a></td>
                     <td class="text-right"><a class="btn btn-danger text-white" href="/removeWebsite/<%= website.id %>">Remove</a></td>
                 </tr>
             <% end %>
